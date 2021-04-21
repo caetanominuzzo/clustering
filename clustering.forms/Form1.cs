@@ -366,12 +366,30 @@ new DataPoint<int>(-23.56281910,-46.66466190,-23.56686700,-46.67947800)
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Form1.FatorKm = int.Parse(txtFatorKm.Text);
+
+            Form1.Dissimilaridade = int.Parse(txtDissimilaridade.Text);
+
             chart1.Series.Clear();
             chart1.ChartAreas[0].AxisY.Maximum = -46.28;
             chart1.ChartAreas[0].AxisY.Minimum = -47;
 
             chart1.ChartAreas[0].AxisX.Maximum = -23.3;
             chart1.ChartAreas[0].AxisX.Minimum = -23.8;
+
+
+            chart1.Series.Add("seriesx0");
+
+            chart1.Series.Last().ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+
+            chart1.Series.Last().Points.Add(new System.Windows.Forms.DataVisualization.Charting.DataPoint
+            {
+                XValue = -23.55,
+                YValues = new double[] { -46.6 },
+                //MarkerColor = c,
+                //Label = tipo.ToString() + " "+ currentColor.ToString() + " " + x.id.ToString(),
+                MarkerSize = 15
+            });
 
             var dataPoints = new HashSet<DataPoint<int>>();
 
@@ -386,61 +404,84 @@ new DataPoint<int>(-23.56281910,-46.66466190,-23.56686700,-46.67947800)
             //}
 
             #region datapoints
-            dataPoints.Add(new DataPoint<int>(1, -23.63073700, -46.76284400));
-            dataPoints.Add(new DataPoint<int>(2, -23.47246600, -46.69145700));
-            dataPoints.Add(new DataPoint<int>(3, -23.65500100, -46.63606800));
-            dataPoints.Add(new DataPoint<int>(4, -23.51356100, -46.47214400));
-            dataPoints.Add(new DataPoint<int>(5, -23.54063600, -46.50772000));
-            dataPoints.Add(new DataPoint<int>(6, -23.60148400, -46.67020800));
-            dataPoints.Add(new DataPoint<int>(7, -23.69411200, -46.50984100));
-            dataPoints.Add(new DataPoint<int>(8, -23.71454600, -46.53431000));
-            dataPoints.Add(new DataPoint<int>(9, -23.69517900, -46.49237500));
-            dataPoints.Add(new DataPoint<int>(10, -23.54964100, -46.70074200));
-            dataPoints.Add(new DataPoint<int>(11, -23.63106400, -46.75923500));
-            dataPoints.Add(new DataPoint<int>(12, -23.59850700, -46.79617100));
-            dataPoints.Add(new DataPoint<int>(13, -23.55167100, -46.77553600));
-            dataPoints.Add(new DataPoint<int>(14, -23.61762400, -46.75971400));
-            dataPoints.Add(new DataPoint<int>(15, -23.58806100, -46.74067200));
-            dataPoints.Add(new DataPoint<int>(16, -23.63106400, -46.75923500));
-            dataPoints.Add(new DataPoint<int>(17, -23.59850700, -46.79617100));
-            dataPoints.Add(new DataPoint<int>(18, -23.61762400, -46.75971400));
-            dataPoints.Add(new DataPoint<int>(19, -23.58421900, -46.70453400));
-            dataPoints.Add(new DataPoint<int>(20, -23.55734400, -46.63531400));
-            dataPoints.Add(new DataPoint<int>(21, -23.57086600, -46.53910000));
-            dataPoints.Add(new DataPoint<int>(22, -23.46006300, -46.58104200));
-            dataPoints.Add(new DataPoint<int>(23, -23.56266200, -46.64730900));
-            dataPoints.Add(new DataPoint<int>(24, -23.59850700, -46.79617100));
-            dataPoints.Add(new DataPoint<int>(25, -23.55167100, -46.77553600));
-            dataPoints.Add(new DataPoint<int>(26, -23.61762400, -46.75971400));
-            dataPoints.Add(new DataPoint<int>(27, -23.58421900, -46.70453400));
-            dataPoints.Add(new DataPoint<int>(28, -23.51714500, -46.77178900));
-            dataPoints.Add(new DataPoint<int>(29, -23.58806100, -46.74067200));
-            dataPoints.Add(new DataPoint<int>(30, -23.54540300, -46.71281600));
-            dataPoints.Add(new DataPoint<int>(31, -23.59938500, -46.67723000));
-            dataPoints.Add(new DataPoint<int>(32, -23.53176900, -46.73454700));
-            dataPoints.Add(new DataPoint<int>(33, -23.52588300, -46.44842800));
-            dataPoints.Add(new DataPoint<int>(34, -23.56689100, -46.56070800));
-            dataPoints.Add(new DataPoint<int>(35, -23.56245800, -46.58221300));
-            dataPoints.Add(new DataPoint<int>(36, -23.57098900, -46.59345500));
-            dataPoints.Add(new DataPoint<int>(37, -23.55827300, -46.58927300));
-            dataPoints.Add(new DataPoint<int>(38, -23.54494800, -46.54692000));
-            dataPoints.Add(new DataPoint<int>(39, -23.56508600, -46.64181700));
-            dataPoints.Add(new DataPoint<int>(40, -23.53549100, -46.59959600));
-            dataPoints.Add(new DataPoint<int>(41, -23.56126700, -46.63685900));
-            dataPoints.Add(new DataPoint<int>(42, -23.49011300, -46.60249200));
-            dataPoints.Add(new DataPoint<int>(43, -23.49372500, -46.70626100));
-            dataPoints.Add(new DataPoint<int>(44, -23.45219200, -46.72911700));
-            dataPoints.Add(new DataPoint<int>(45, -23.68508000, -46.46266700));
-            dataPoints.Add(new DataPoint<int>(46, -23.40663400, -46.45492800));
-            dataPoints.Add(new DataPoint<int>(47, -23.55130200, -46.54233600));
-            dataPoints.Add(new DataPoint<int>(48, -23.52856500, -46.68533500));
-            dataPoints.Add(new DataPoint<int>(49, -23.69260400, -46.57037500));
-            dataPoints.Add(new DataPoint<int>(50, -23.68161500, -46.51300200));
-            dataPoints.Add(new DataPoint<int>(51, -23.51844400, -46.58564600));
-            dataPoints.Add(new DataPoint<int>(52, -23.48603700, -46.38723500));
+            //dataPoints.Add(new DataPoint<int>(1, -23.54573700, -46.57884400));
+            //dataPoints.Add(new DataPoint<int>(2, -23.56546600, -46.62945700));
+            //dataPoints.Add(new DataPoint<int>(3, -23.65500100, -46.63606800));
+            //dataPoints.Add(new DataPoint<int>(4, -23.51356100, -46.47214400));
+            //dataPoints.Add(new DataPoint<int>(5, -23.54063600, -46.50772000));
+            //dataPoints.Add(new DataPoint<int>(6, -23.60148400, -46.67020800));
+            //dataPoints.Add(new DataPoint<int>(7, -23.69411200, -46.50984100));
+            //dataPoints.Add(new DataPoint<int>(8, -23.71454600, -46.53431000));
+            //dataPoints.Add(new DataPoint<int>(9, -23.69517900, -46.49237500));
+            //dataPoints.Add(new DataPoint<int>(10, -23.54964100, -46.70074200));
+            //dataPoints.Add(new DataPoint<int>(11, -23.63106400, -46.75923500));
+            //dataPoints.Add(new DataPoint<int>(12, -23.59850700, -46.79617100));
+            //dataPoints.Add(new DataPoint<int>(13, -23.55167100, -46.77553600));
+            //dataPoints.Add(new DataPoint<int>(14, -23.61762400, -46.75971400));
+            //dataPoints.Add(new DataPoint<int>(15, -23.58806100, -46.74067200));
+            //dataPoints.Add(new DataPoint<int>(16, -23.63106400, -46.75923500));
+            //dataPoints.Add(new DataPoint<int>(17, -23.59850700, -46.79617100));
+            //dataPoints.Add(new DataPoint<int>(18, -23.61762400, -46.75971400));
+            //dataPoints.Add(new DataPoint<int>(19, -23.58421900, -46.70453400));
+            //dataPoints.Add(new DataPoint<int>(20, -23.55734400, -46.63531400));
+            //dataPoints.Add(new DataPoint<int>(21, -23.57086600, -46.53910000));
+            //dataPoints.Add(new DataPoint<int>(22, -23.46006300, -46.58104200));
+            //dataPoints.Add(new DataPoint<int>(23, -23.56266200, -46.64730900));
+            //dataPoints.Add(new DataPoint<int>(24, -23.59850700, -46.79617100));
+            //dataPoints.Add(new DataPoint<int>(25, -23.55167100, -46.77553600));
+            //dataPoints.Add(new DataPoint<int>(26, -23.61762400, -46.75971400));
+            //dataPoints.Add(new DataPoint<int>(27, -23.58421900, -46.70453400));
+            //dataPoints.Add(new DataPoint<int>(28, -23.51714500, -46.77178900));
+            //dataPoints.Add(new DataPoint<int>(29, -23.58806100, -46.74067200));
+            //dataPoints.Add(new DataPoint<int>(30, -23.54540300, -46.71281600));
+            //dataPoints.Add(new DataPoint<int>(31, -23.59938500, -46.67723000));
+            //dataPoints.Add(new DataPoint<int>(32, -23.53176900, -46.73454700));
+            //dataPoints.Add(new DataPoint<int>(33, -23.52588300, -46.44842800));
+            //dataPoints.Add(new DataPoint<int>(34, -23.56689100, -46.56070800));
+            //dataPoints.Add(new DataPoint<int>(35, -23.56245800, -46.58221300));
+            //dataPoints.Add(new DataPoint<int>(36, -23.57098900, -46.59345500));
+            //dataPoints.Add(new DataPoint<int>(37, -23.55827300, -46.58927300));
+            //dataPoints.Add(new DataPoint<int>(38, -23.54494800, -46.54692000));
+            //dataPoints.Add(new DataPoint<int>(39, -23.56508600, -46.64181700));
+            //dataPoints.Add(new DataPoint<int>(40, -23.53549100, -46.59959600));
+            //dataPoints.Add(new DataPoint<int>(41, -23.56126700, -46.63685900));
+            //dataPoints.Add(new DataPoint<int>(42, -23.49011300, -46.60249200));
+            //dataPoints.Add(new DataPoint<int>(43, -23.49372500, -46.70626100));
+            //dataPoints.Add(new DataPoint<int>(44, -23.45219200, -46.72911700));
+            //dataPoints.Add(new DataPoint<int>(45, -23.68508000, -46.46266700));
+            //dataPoints.Add(new DataPoint<int>(46, -23.40663400, -46.45492800));
+            //dataPoints.Add(new DataPoint<int>(47, -23.55130200, -46.54233600));
+            //dataPoints.Add(new DataPoint<int>(48, -23.52856500, -46.68533500));
+            //dataPoints.Add(new DataPoint<int>(49, -23.69260400, -46.57037500));
+            //dataPoints.Add(new DataPoint<int>(50, -23.68161500, -46.51300200));
+            //dataPoints.Add(new DataPoint<int>(51, -23.51844400, -46.58564600));
+            //dataPoints.Add(new DataPoint<int>(52, -23.48603700, -46.38723500));
             #endregion
 
-            MelhorCluster(dataPoints.ToHashSet());
+            var j = 0;
+
+            dataPoints.Add(new DataPoint<int>(j++, -23.545, -46.569));
+            dataPoints.Add(new DataPoint<int>(j++, -23.555, -46.64));
+
+            dataPoints.Add(new DataPoint<int>(j++, -23.545, -46.64));
+            dataPoints.Add(new DataPoint<int>(j++, -23.555, -46.569 ));
+
+            for (var l = chart1.ChartAreas[0].AxisY.Minimum; l < -46.5; l += (((1 - (l / -46.6)) * 3) + 0.13))
+                for (var g = chart1.ChartAreas[0].AxisX.Minimum; g < chart1.ChartAreas[0].AxisX.Maximum; g += (((1 - (g / -23.55 )) * 3) + 0.13))
+                {
+                    if (j > 26)
+                        break;
+
+                    if (j == 17 || j == 16 || j == 14 || j == 15 || j == 19 || j == 20 || j == 21)
+                    {
+                        j++;
+                        continue;
+                    }
+
+                    dataPoints.Add(new DataPoint<int>(j++, g, l));
+                }
+
+                    MelhorCluster(dataPoints.ToHashSet());
 
             //dataPointsCount = 60;           
 
@@ -501,16 +542,23 @@ new DataPoint<int>(-23.56281910,-46.66466190,-23.56686700,-46.67947800)
                             FirstOrDefault(y => y.Count() <= MAX_ITEMS);
 
                         //se a quantidade de entregas nesse cluster for igual ao minimo q estamos decrescendo finaliza o processo
-                        if (bestCluster?.Count() == minItems)
+                        if (bestCluster?.Count() == minItems &&
+                        bestCluster.Dissimilarity < Form1.Dissimilaridade)
                             break;
                     }
 
                     //como são dois loops, verifica de novo e repete o break
-                    if (bestCluster?.Count() == minItems)
+                    if (bestCluster?.Count() == minItems &&
+                        bestCluster.Dissimilarity < Form1.Dissimilaridade)
                         break;
 
                     //decresce o minItens pra tentar de novo
                     minItems--;
+                }
+
+                if(minItems < 3 && currentColor < 2)
+                {
+                    return;
                 }
 
                 //resultado dessa iteração
@@ -527,10 +575,10 @@ new DataPoint<int>(-23.56281910,-46.66466190,-23.56686700,-46.67947800)
 
                     chart1.Series.Last().Points.Add(new System.Windows.Forms.DataVisualization.Charting.DataPoint
                     {
-                        XValue = x.DestinoLatitude,
-                        YValues = new double[] { x.DestinoLongitude },
-                        // MarkerColor = c,
-                        //Label = tipo.ToString() + " "+ currentColor.ToString() + " " + x.id.ToString(),
+                        XValue = x.InicioLatitude,
+                        YValues = new double[] { x.InicioLongitude },
+                        //MarkerColor = c,
+                        Label = currentColor.ToString() + " " + x.Item.ToString(),
                         MarkerSize = 10
                     });
 
@@ -579,6 +627,9 @@ new DataPoint<int>(-23.56281910,-46.66466190,-23.56686700,-46.67947800)
         }
 
         int kk = 0;
+
+        public static int FatorKm { get; private set; }
+        public static int Dissimilaridade { get; private set; }
 
         private void PlotarPedidos(bool apenasProximos, bool apenasDistantes)
         {
@@ -1125,6 +1176,11 @@ new DataPoint<int>(-23.56281910,-46.66466190,-23.56686700,-46.67947800)
             return new GeoCoordinate(this.DestinoLatitude, this.DestinoLongitude).GetDistanceTo(new GeoCoordinate(other.DestinoLatitude, other.DestinoLongitude));
         }
 
+        public double Geodesic2(DataPoint<T> other)
+        {
+            return new GeoCoordinate(this.InicioLatitude, this.InicioLongitude).GetDistanceTo(new GeoCoordinate(other.InicioLatitude, other.InicioLongitude));
+        }
+
         public double AngularEuclidean(DataPoint<T> other)
         {
             var deltaX = this.DestinoLatitude - this.InicioLatitude;
@@ -1141,9 +1197,9 @@ new DataPoint<int>(-23.56281910,-46.66466190,-23.56686700,-46.67947800)
             if (dx > pi2 / 2)
                 dx = pi2 - dx;
 
-            // Console.WriteLine(this.id + " " +other.id + ": " + dx.ToString() +  "---" + ((rad - rad2) * (180 / Math.PI)).ToString() + "  " + (rad - rad2).ToString());
+            Console.WriteLine(this.Item + " " +other.Item + ": " + dx.ToString() +  "---" + ((rad - rad2) * (180 / Math.PI)).ToString() + "  " + (rad - rad2).ToString() + "  > " + (Geodesic2(other) / Form1.FatorKm) + " == " + ((dx * (180 / Math.PI)) + (Geodesic2(other) / Form1.FatorKm)));
 
-            return dx * (180 / Math.PI);
+            return (dx * (180 / Math.PI)) + (Geodesic2(other) / Form1.FatorKm);
         }
 
 
